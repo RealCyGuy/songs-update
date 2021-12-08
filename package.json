@@ -1,0 +1,16 @@
+{
+  "name": "songs-update",
+  "version": "1.0.0",
+  "description": "songs-update",
+  "main": "index.js",
+  "scripts": {
+    "update": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@googleapis/youtube": "^2.0.0",
+    "redis": "^4.0.0",
+    "tinyduration": "^3.2.2"
+  }
+}

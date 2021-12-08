@@ -1,0 +1,19 @@
+name: update
+on:
+  schedule:
+    - cron: 0 * * * *
+  workflow_dispatch:
+      
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run update
+        env:
+          REDIS_URL: ${{ secrets.redisURL }}
+          API_KEY: ${{ secrets.apiKey }}
