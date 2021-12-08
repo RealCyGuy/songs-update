@@ -41,7 +41,7 @@ async function update() {
         if ("minutes" in d) {
           seconds += d.minutes * 60;
         } else {
-          d.seconds = 0;
+          d.minutes = 0;
         }
         items.push({
           id: res.data.items[i].contentDetails.videoId,
