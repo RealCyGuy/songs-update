@@ -61,9 +61,6 @@ async function update() {
   await redis.set("items", JSON.stringify(items));
   await redis.set("last updated", Date.now().toString());
   await redis.set("duration", duration.toString());
-  return {
-    statusCode: 200,
-    body: JSON.stringify(items),
-  };
+  await redis.quit();
 };
 update();
