@@ -17,3 +17,4 @@ jobs:
         env:
           REDIS_URL: ${{ secrets.redisURL }}
           API_KEY: ${{ secrets.apiKey }}
+          WEBHOOK_URL: ${{ secrets.webhookURL }}
