@@ -48,12 +48,12 @@ async function update() {
         } else {
           d.minutes = 0;
         }
-        if (res2.data.items[i2].statistics.commentCount) {
-          comments = parseInt(
-            res2.data.items[i2].statistics.commentCount
+        if (res2.data.items[i2].statistics.likeCount) {
+          likes = parseInt(
+            res2.data.items[i2].statistics.likeCount
           ).toLocaleString("en-US");
         } else {
-          comments = "0";
+          likes = "0";
         }
         items.push({
           id: res.data.items[i].contentDetails.videoId,
@@ -66,7 +66,7 @@ async function update() {
           views: parseInt(
             res2.data.items[i2].statistics.viewCount
           ).toLocaleString("en-US"),
-          comments: comments,
+          likes: likes,
         });
         duration += seconds;
         i2++;
@@ -86,7 +86,7 @@ async function update() {
         embeds: [
           {
             description: `[${item.title}](https://youtube.com/?watch=${item.id}&list=PLRct1-5In-8Ewg5Kq-0JP8wh3ZweOXH9A)
-                            By: [${item.channel}](https://youtube.com/channel/${item.channelId})`,
+                            By: [${item.channel}](https://youtube.com/channel/${item.channelId})\n`,
             fields: [
               {
                 name: "Duration",
@@ -99,8 +99,8 @@ async function update() {
                 inline: true,
               },
               {
-                name: "Comments",
-                value: item.comments,
+                name: "Likes",
+                value: item.likes,
                 inline: true,
               },
             ],
@@ -108,9 +108,6 @@ async function update() {
             author: {
               name: "New song!",
               url: "https://songsyt.netlify.app/",
-            },
-            footer: {
-              text: "hello",
             },
             image: {
               url: `https://i.ytimg.com/vi/${item.id}/maxresdefault.jpg`,
