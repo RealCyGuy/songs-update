@@ -119,6 +119,7 @@ By: [${item.channel}](https://youtube.com/channel/${item.channelId})`,
         console.log(err);
       });
   });
+  items.reverse();
   await redis.set("items", JSON.stringify(items));
   await redis.set("last updated", Date.now().toString());
   await redis.set("duration", duration.toString());
