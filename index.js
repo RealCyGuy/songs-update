@@ -86,7 +86,7 @@ async function update() {
         embeds: [
           {
             description: `[${item.title}](https://youtube.com/?watch=${item.id}&list=PLRct1-5In-8Ewg5Kq-0JP8wh3ZweOXH9A)
-                            By: [${item.channel}](https://youtube.com/channel/${item.channelId})\n`,
+By: [${item.channel}](https://youtube.com/channel/${item.channelId})`,
             fields: [
               {
                 name: "Duration",
