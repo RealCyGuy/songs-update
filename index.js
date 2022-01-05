@@ -76,7 +76,11 @@ async function update() {
   }
   await redis.connect();
   var oldItems = await redis.get("items");
-  oldItems = JSON.parse(oldItems);
+  if (oldItems == null) {
+    oldItems = [];
+  } else {
+    oldItems = JSON.parse(oldItems);
+  }
   var newItems = items.reverse().filter((value) => {
     return !oldItems.some((oldItem) => oldItem.id === value.id);
   });
