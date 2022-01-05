@@ -80,44 +80,54 @@ async function update() {
   var newItems = items.reverse().filter((value) => {
     return !oldItems.some((oldItem) => oldItem.id === value.id);
   });
-  newItems.forEach((item) => {
-    axios
-      .post(process.env.WEBHOOK_URL, {
-        embeds: [
+  newItems.forEach((item, index) => {
+    setTimeout(() => {
+      axios
+        .post(
+          "https://discord.com/api/webhooks/927803260432158720/vXJAuPDEZJEFlmudK1n2MiJs4Ie2mv_q1DW4FGSHG7f2PmmDn2oB83obOIcRWanlpSs6",
           {
-            description: `[${item.title}](https://youtube.com/?watch=${item.id}&list=PLRct1-5In-8Ewg5Kq-0JP8wh3ZweOXH9A)
+            embeds: [
+              {
+                description: `[${item.title
+                  .replace(/[\|]/g, "\\|")
+                  .replace(/[\_]/g, "\\_")
+                  .replace(/[\*]/g, "\\*")}](https://youtube.com/?watch=${
+                  item.id
+                }&list=PLRct1-5In-8Ewg5Kq-0JP8wh3ZweOXH9A)
 By: [${item.channel}](https://youtube.com/channel/${item.channelId})`,
-            fields: [
-              {
-                name: "Duration",
-                value: item.duration,
-                inline: true,
-              },
-              {
-                name: "Views",
-                value: item.views,
-                inline: true,
-              },
-              {
-                name: "Likes",
-                value: item.likes,
-                inline: true,
+                fields: [
+                  {
+                    name: "Duration",
+                    value: item.duration,
+                    inline: true,
+                  },
+                  {
+                    name: "Views",
+                    value: item.views,
+                    inline: true,
+                  },
+                  {
+                    name: "Likes",
+                    value: item.likes,
+                    inline: true,
+                  },
+                ],
+                color: 7990062,
+                author: {
+                  name: "New song!",
+                  url: "https://songsyt.netlify.app/",
+                },
+                image: {
+                  url: `https://i.ytimg.com/vi/${item.id}/maxresdefault.jpg`,
+                },
               },
             ],
-            color: 7990062,
-            author: {
-              name: "New song!",
-              url: "https://songsyt.netlify.app/",
-            },
-            image: {
-              url: `https://i.ytimg.com/vi/${item.id}/maxresdefault.jpg`,
-            },
-          },
-        ],
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+          }
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+    }, index * 1000);
   });
   items.reverse();
   await redis.set("items", JSON.stringify(items));
