@@ -88,7 +88,7 @@ async function update() {
     setTimeout(() => {
       axios
         .post(
-          "https://discord.com/api/webhooks/927803260432158720/vXJAuPDEZJEFlmudK1n2MiJs4Ie2mv_q1DW4FGSHG7f2PmmDn2oB83obOIcRWanlpSs6",
+          process.env.WEBHOOK_URL,
           {
             embeds: [
               {
