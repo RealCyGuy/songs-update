@@ -131,7 +131,7 @@ By: [${item.channel}](https://youtube.com/channel/${item.channelId})`,
         .catch((err) => {
           console.log(err);
         });
-    }, index * 1000);
+    }, index * 2001);
   });
   items.reverse();
   await redis.set("items", JSON.stringify(items));
