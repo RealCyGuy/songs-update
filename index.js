@@ -67,6 +67,8 @@ async function update() {
             res2.data.items[i2].statistics.viewCount
           ).toLocaleString("en-US"),
           likes: likes,
+          publishedDate: res.data.items[i].contentDetails.videoPublishedAt,
+          addedDate: res.data.items[i].snippet.publishedAt,
         });
         duration += seconds;
         i2++;
