@@ -1,4 +1,4 @@
-*This has been deprecated in favour of the new [songs-backup](https://github.com/realcyguy/songs-backup) because it's better every way.*
+*This has been deprecated in favour of the new [songs-backup](https://github.com/realcyguy/songs-backup) because it's better in every way.*
 
 # songs-update
 
